@@ -23,32 +23,19 @@ public:
         houseNumber = 0;
         apartmentNumber = 0;
     }
-
-
-
-
-    void set_сityName(std::string сityName)// 
+    
+    Address(std::string сityName, std::string streetName, int houseNumber, int apartmentNumber)
     {
         this->сityName = сityName;
-
-    }
-    void set_streetName(std::string streetName)// 
-    {
         this->streetName = streetName;
-
-    }
-
-    void set_houseNumber(int houseNumber)// 
-    {
-        this->houseNumber = houseNumber;
-
-    }
-
-    void set_apartmentNumber(int apartmentNumber)// 
-    {
+        this->houseNumber= houseNumber;
         this->apartmentNumber = apartmentNumber;
-
     }
+
+
+
+   
+   
     
     std::string  get_output_address()
     {
@@ -148,7 +135,7 @@ int main()
 
     f >> sizeArr;
 
-    Address* address = new Address[sizeArr];
+    Address* address = new Address[sizeArr];// создаю указатель на обект и иницииализирую конструктором по умолчанию
 
 
 
@@ -156,21 +143,21 @@ int main()
     for (int i = 0; i < sizeArr; i++)
     {
 
-        address[i] = Address();
-
-        f >> сityName;
-        address[i].set_сityName(сityName);
-        f >> streetName;
-        address[i].set_streetName(streetName);
-        f >> houseNumber;
-        address[i].set_houseNumber(houseNumber);
-        f >> apartmentNumber;
-        address[i].set_apartmentNumber(apartmentNumber);
-       
       
 
+        f >> сityName;
+     
+        f >> streetName;
+      
+        f >> houseNumber;
+       
+        f >> apartmentNumber;
+       
+       
+        address[i] = Address(сityName, streetName, houseNumber, apartmentNumber);//иницииализирую данными из файла 
+
     }
-    
+    //address[1].getPrint();
     int n = sizeArr;
 
     address[sizeArr+1].sort(address,  n);
